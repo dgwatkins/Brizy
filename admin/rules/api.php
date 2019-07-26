@@ -149,5 +149,4 @@ class Brizy_Admin_Rules_Api extends Brizy_Admin_AbstractApi {
 
 		wp_send_json_success( null, 200 );
 	}
-
 }

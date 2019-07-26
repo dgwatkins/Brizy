@@ -201,8 +201,7 @@ class Brizy_Admin_Blocks_Api extends Brizy_Admin_AbstractApi {
 			}
 
 			$this->success( Brizy_Editor_Block::postData( $block ) );
-		} catch
-		( Exception $exception ) {
+		} catch ( Exception $exception ) {
 			$this->error( 400, $exception->getMessage() );
 		}
 	}
