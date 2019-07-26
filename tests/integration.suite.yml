@@ -15,7 +15,7 @@ modules:
       dump: 'tests/_data/dump-active-brizy.sql'
       reconect: true
       populate: true
-      cleanup: true
+      cleanup: false
       waitlock: 10
       url: '%TEST_SITE_WP_URL%'
       urlReplacement: true
