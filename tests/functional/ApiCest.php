@@ -3,7 +3,6 @@
 
 class ApiCest {
 
-
 	public function _before( FunctionalTester $I ) {
 		wp_cache_flush();
 		$I->loginAs( 'admin', 'admin' );

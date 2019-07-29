@@ -1,8 +1,7 @@
-actor: FunctionalTester
+actor: IntegrationTester
 modules:
   enabled:
     - \Helper\Integration
-    - \Helper\Functional
     - Asserts
     - WPDb
     - WPLoader
@@ -20,8 +19,11 @@ modules:
       url: '%TEST_SITE_WP_URL%'
       urlReplacement: true
       tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
+      checkExistence: true
+      update: true
     WPLoader:
       loadOnly: true
+      multisite: false
       wpRootFolder: "%WP_ROOT_FOLDER%"
       dbName: "%TEST_SITE_DB_NAME%"
       dbHost: "%TEST_SITE_DB_HOST%"
