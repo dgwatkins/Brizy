@@ -80,7 +80,7 @@ class Brizy_Admin_Rules_Api extends Brizy_Admin_AbstractApi {
 		$postType = get_post_type( $postId );
 
 		if ( ! $postId ) {
-			wp_send_json_error( (object) array( 'message' => 'Invalid template' ), 400 );
+			$this->error( 400, 'Invalid post' );
 		}
 
 		$ruleData = file_get_contents( "php://input" );
@@ -93,24 +93,19 @@ class Brizy_Admin_Rules_Api extends Brizy_Admin_AbstractApi {
 
 		try {
 			$ruleValidator = Brizy_Admin_Rules_ValidatorFactory::getValidator( $postId );
+
+			// validate rule
+			$ruleValidator = Brizy_Admin_Rules_ValidatorFactory::getValidator( $postId );
+
+			if ( ! $ruleValidator ) {
+				$this->error( 400, 'Unable to get the rule validator for this post type' );
+			}
+
 			$ruleValidator->validateRuleForPostId( $rule, $postId );
 		} catch ( Brizy_Admin_Rules_ValidationException $e ) {
 			wp_send_json_error( array( 'message' => $e->getMessage(), 'rule' => $e->getRuleId() ), 400 );
 		} catch ( Exception $e ) {
-			wp_send_json_error( array( 'message' => $e->getMessage() ), 400 );
-		}
-
-		// validate rule
-
-		$validator = Brizy_Admin_Rules_ValidatorFactory::getValidator( $postId );
-
-		try {
-			$validator->validateRuleForPostId( $rule, $postId );
-		} catch ( Brizy_Admin_Rules_ValidationException $e ) {
-			wp_send_json_error( array(
-				'rule'    => $e->getRuleId(),
-				'message' => $e->getMessage()
-			), 400 );
+			$this->error( 400, $e->getMessage() );
 		}
 
 		$this->manager->addRule( $postId, $rule );
@@ -137,7 +132,12 @@ class Brizy_Admin_Rules_Api extends Brizy_Admin_AbstractApi {
 			wp_send_json_error( $e->getMessage(), 400 );
 		}
 
+		// validate rule
 		$validator = Brizy_Admin_Rules_ValidatorFactory::getValidator( $postId );
+
+		if ( ! $validator ) {
+			$this->error( 400, 'Unable to get the rule validator for this post type' );
+		}
 
 		try {
 			$validator->validateRulesForPostId( $rules, $postId );
@@ -172,7 +172,12 @@ class Brizy_Admin_Rules_Api extends Brizy_Admin_AbstractApi {
 
 		$rules = $this->manager->createRulesFromJson( $rulesData, $postType );
 
+		// validate rule
 		$validator = Brizy_Admin_Rules_ValidatorFactory::getValidator( $postId );
+
+		if ( ! $validator ) {
+			$this->error( 400, 'Unable to get the rule validator for this post type' );
+		}
 
 		try {
 			$validator->validateRulesForPostId( $rules, $postId );
