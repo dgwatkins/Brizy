@@ -1,10 +1,16 @@
-actor: IntegrationTester
+# Codeception Test Suite Configuration
+#
+# Suite for unit or integration tests that require WordPress functions and classes.
+
+actor: WpunitTester
 modules:
   enabled:
-    - \Helper\Integration
     - Asserts
     - WPDb
     - WPLoader
+    - \Helper\Unit
+    - \Helper\Wpunit
+    - \Helper\Integration
     - WPFilesystem
   config:
     WPDb:
@@ -19,12 +25,10 @@ modules:
       url: '%TEST_SITE_WP_URL%'
       urlReplacement: true
       tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
-      checkExistence: true
-      update: true
     WPLoader:
-      loadOnly: true
-      multisite: false
       wpRootFolder: "%WP_ROOT_FOLDER%"
+      isolatedInstall: true
+      domain: "%TEST_SITE_WP_DOMAIN%"
       dbName: "%TEST_SITE_DB_NAME%"
       dbHost: "%TEST_SITE_DB_HOST%"
       dbUser: "%TEST_SITE_DB_USER%"
