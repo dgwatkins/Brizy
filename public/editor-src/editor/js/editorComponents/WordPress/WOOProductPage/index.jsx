@@ -5,7 +5,9 @@ import { WPShortcode } from "../common/WPShortcode";
 import Toolbar from "visual/component/Toolbar";
 import * as toolbarConfig from "./toolbar";
 import defaultValue from "./defaultValue.json";
-import { styleClassName, styleCSSVars } from "./styles";
+import classnames from "classnames";
+import { style } from "./styles";
+import { css } from "visual/utils/cssStyle";
 
 const resizerPoints = ["centerLeft", "centerRight"];
 
@@ -18,10 +20,18 @@ class WOOProductPage extends EditorComponent {
 
   handleResizerChange = patch => this.patchValue(patch);
 
-  renderForEdit(v) {
+  renderForEdit(v, vs, vd) {
     const attributes = {
       id: v.productID
     };
+
+    const className = classnames(
+      css(
+        `${this.constructor.componentId}`,
+        `${this.getId()}`,
+        style(v, vs, vd)
+      )
+    );
 
     return (
       <Toolbar {...this.makeToolbarPropsFromConfig(toolbarConfig)}>
@@ -30,8 +40,7 @@ class WOOProductPage extends EditorComponent {
             name="product_page"
             attributes={attributes}
             placeholderIcon="woo-2"
-            className={styleClassName(v)}
-            style={styleCSSVars(v)}
+            className={className}
             resizerPoints={resizerPoints}
             resizerMeta={this.props.meta}
             resizerValue={v}

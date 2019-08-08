@@ -168,7 +168,7 @@
 //
 // Links
 //
-.brz-a {
+.brz-a:not(.brz-btn) {
   color: $link-color;
   text-decoration: $link-decoration;
   background-color: transparent; // Remove the gray background on active links in IE 10.

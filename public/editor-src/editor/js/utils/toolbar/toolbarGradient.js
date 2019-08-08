@@ -61,10 +61,18 @@ export function toolbarGradientRange({ v, device, state, disabled }) {
   };
 }
 
-export function toolbarGradientType({ v, device, state, className, disabled }) {
+export function toolbarGradientType({
+  v,
+  device,
+  state,
+  devices = "all",
+  className,
+  disabled
+}) {
   return {
     id: defaultValueKey({ key: "gradientType", device, state }),
     type: "select",
+    devices,
     disabled,
     className,
     choices: [
@@ -81,11 +89,18 @@ export function toolbarGradientType({ v, device, state, className, disabled }) {
   };
 }
 
-export function toolbarGradientLinearDegree({ v, device, state, disabled }) {
+export function toolbarGradientLinearDegree({
+  v,
+  device,
+  state,
+  devices = "all",
+  disabled
+}) {
   return {
     id: defaultValueKey({ key: "gradientLinearDegree", device, state }),
     type: "inputNumber",
     className: "brz-ed-grid__gradient__size",
+    devices,
     disabled,
     min: 0,
     max: 360,
@@ -93,11 +108,18 @@ export function toolbarGradientLinearDegree({ v, device, state, disabled }) {
   };
 }
 
-export function toolbarGradientRadialDegree({ v, device, state, disabled }) {
+export function toolbarGradientRadialDegree({
+  v,
+  device,
+  state,
+  devices = "all",
+  disabled
+}) {
   return {
     id: defaultValueKey({ key: "gradientRadialDegree", device, state }),
     type: "inputNumber",
     className: "brz-ed-grid__gradient__degree",
+    devices,
     disabled,
     min: 0,
     max: 1000,

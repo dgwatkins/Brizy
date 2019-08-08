@@ -1,11 +1,19 @@
 import { t } from "visual/utils/i18n";
+import { defaultValueKey, defaultValueValue } from "visual/utils/onChange";
 
-export function toolbarZIndex({ v, position = 20 }) {
+export function toolbarZIndex({
+  v,
+  device,
+  state,
+  position = 20,
+  devices = "all"
+}) {
   return {
     type: "slider",
-    id: "zIndex",
+    id: defaultValueKey({ key: "zIndex", device, state }),
     position,
     label: t("Z-index"),
+    devices,
     slider: {
       min: 0,
       max: 100
@@ -15,7 +23,7 @@ export function toolbarZIndex({ v, position = 20 }) {
       min: 0
     },
     value: {
-      value: v.zIndex
+      value: defaultValueValue({ v, key: "zIndex", device, state })
     },
     onChange: ({ value: zIndex }) => ({
       zIndex

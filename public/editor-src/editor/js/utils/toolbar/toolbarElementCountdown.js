@@ -127,7 +127,7 @@ export function toolbarElementCountdownTimeZone({ v }) {
       },
       {
         value: "-360",
-        title: t("+ 6:00 (Astana)")
+        title: t("+ 6:00 (Nur-Sultan)")
       },
       {
         value: "-420",
@@ -143,7 +143,7 @@ export function toolbarElementCountdownTimeZone({ v }) {
       },
       {
         value: "-600",
-        title: t("+ 10:00 (Sidney, Melbourne)")
+        title: t("+ 10:00 (Sydney, Melbourne)")
       },
       {
         value: "-660",

@@ -10,6 +10,7 @@ export function toolbarBgImage({
   v,
   device,
   state,
+  devices = "all",
   disabled = false,
   onChange
 }) {
@@ -56,6 +57,7 @@ export function toolbarBgImage({
     id: bgImageKey,
     label: t("Image"),
     type: "imageSetter",
+    devices,
     disabled,
     population: {
       show: imageDynamicContentChoices.length > 0,

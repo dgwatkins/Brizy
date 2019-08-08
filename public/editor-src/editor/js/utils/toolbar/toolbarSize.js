@@ -1,11 +1,17 @@
 import { t } from "visual/utils/i18n";
 import { defaultValueKey, defaultValueValue } from "visual/utils/onChange";
 
-export function toolbarSizeSizeSizePercent({ v, device }) {
+export function toolbarSizeSizeSizePercent({
+  v,
+  device,
+  devices = "all",
+  state
+}) {
   return {
     id: defaultValueKey({ key: "size", device }),
     label: t("Size"),
     type: "slider",
+    devices,
     slider: {
       min: 1,
       max: 100
@@ -31,10 +37,16 @@ export function toolbarSizeSizeSizePercent({ v, device }) {
   };
 }
 
-export function toolbarSizeWidthWidthPercent({ v, device, state }) {
+export function toolbarSizeWidthWidthPercent({
+  v,
+  device,
+  devices = "all",
+  state
+}) {
   return {
     id: defaultValueKey({ key: "width", device, state }),
     label: t("Width"),
+    devices,
     type: "slider",
     slider: {
       min: 1,
@@ -61,11 +73,18 @@ export function toolbarSizeWidthWidthPercent({ v, device, state }) {
   };
 }
 
-export function toolbarSizeHeightHeightPx({ v, device, state, config }) {
+export function toolbarSizeHeightHeightPx({
+  v,
+  device,
+  state,
+  config,
+  devices = "all"
+}) {
   return {
     id: defaultValueKey({ key: "height", device, state }),
     label: t("Height"),
     type: "slider",
+    devices,
     slider: {
       min: config.slider.min,
       max: config.slider.max

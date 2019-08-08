@@ -13,7 +13,7 @@ export function getItemsForDesktop(v) {
         {
           id: "shortcode",
           type: "textarea",
-          placeholder: t("Paste your wordpress shortcode here..."),
+          placeholder: t("Paste your WordPress shortcode here ..."),
           value: v.shortcode
         }
       ]

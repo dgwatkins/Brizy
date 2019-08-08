@@ -27,7 +27,9 @@ export { toolbarBorderStyle } from "./toolbarBorderStyle";
 // Border Width
 export {
   toolbarBorderWidth,
-  toolbarBorderWidthBorderColorPicker
+  toolbarBorderWidthBorderColorPicker,
+  toolbarBorderWidthBorderColorPickerGrouped2,
+  toolbarBorderWidthBorderColorPicker2
 } from "./toolbarBorderWidth";
 
 // Border Radius
@@ -37,7 +39,9 @@ export { toolbarBorderRadius } from "./toolbarBorderRadius";
 export {
   toolbarColorHexAndOpacity,
   toolbarColorPalette,
-  toolbarColorFields
+  toolbarColorFields,
+  toolbarColor2,
+  toolbarColorHexField2
 } from "./toolbarColor";
 
 // Gradient
@@ -52,14 +56,18 @@ export {
 export {
   toolbarBgColorHexAndOpacity,
   toolbarBgColorPalette,
-  toolbarBgColorFields
+  toolbarBgColorFields,
+  toolbarBgColor2,
+  toolbarBgColorHexField2
 } from "./toolbarBgColor";
 
 // Border Color
 export {
   toolbarBorderColorHexAndOpacity,
   toolbarBorderColorPalette,
-  toolbarBorderColorFields
+  toolbarBorderColorFields,
+  toolbarBorderColor2,
+  toolbarBorderColorHexField2
 } from "./toolbarBorderColor";
 
 // Anchor and URL
@@ -67,11 +75,14 @@ export {
   toolbarLinkAnchor,
   toolbarLinkExternal,
   toolbarLinkExternalBlank,
-  toolbarLinkExternalRel
+  toolbarLinkExternalRel,
+  toolbarLinkTargetUrl,
+  toolbarLinkHref,
+  toolbarLinkPopup
 } from "./toolbarLink";
 
 // Horizontal Align
-export { toolbarHorizontalAlign } from "./toolbarAlign";
+export { toolbarHorizontalAlign, toolbarVerticalAlign } from "./toolbarAlign";
 
 // Size
 export {
@@ -90,7 +101,8 @@ export { toolbarMargin } from "./toolbarMargin";
 export {
   toolbarShowOnDesktop,
   toolbarShowOnTablet,
-  toolbarShowOnMobile
+  toolbarShowOnMobile,
+  toolbarShowOnResponsive
 } from "./toolbarShowOnDevices";
 
 // Revers Columns
@@ -120,7 +132,10 @@ export {
   toolbarBoxShadowSpread,
   toolbarBoxShadowVertical,
   toolbarBoxShadowHorizontal,
-  toolbarBoxShadow
+  toolbarBoxShadow,
+  toolbarBoxShadow2,
+  toolbarBoxShadowHexField2,
+  toolbarBoxShadowFields2
 } from "./toolbarBoxShadow";
 
 // Disabled
@@ -203,3 +218,74 @@ export {
 
 // Element Image
 export { toolbarImageLinkExternal } from "./toolbarElementImage";
+
+// Typography
+export {
+  toolbarTypography2FontFamily,
+  toolbarTypography2FontStyle,
+  toolbarTypography2FontSize,
+  toolbarTypography2LineHeight,
+  toolbarTypography2FontWeight,
+  toolbarTypography2LetterSpacing
+} from "./toolbarTypography2";
+
+// Element Facebook Button
+export {
+  toolbarElementFbButtonType,
+  toolbarElementFbButtonLayout,
+  toolbarElementFbButtonSize,
+  toolbarElementFbButtonShare,
+  toolbarElementFbButtonCounter,
+  toolbarElementFbButtonFriends
+} from "./toolbarElementFbButton";
+
+// Element Map
+export {
+  toolbarElementMapAddress,
+  toolbarElementMapZoom
+} from "./toolbarElementMap";
+
+// Element Facebook Page
+export {
+  toolbarElementFbPageTabs,
+  toolbarElementFbPageHeight,
+  toolbarElementFbPageSmallHeader,
+  toolbarElementFbPageHideCover,
+  toolbarElementFbPageShowFacepile,
+  toolbarElementFbPageLink
+} from "./toolbarElementFbPage";
+
+// Element Facebook Group
+export {
+  toolbarElementFbGroupWidth,
+  toolbarElementFbGroupSkin,
+  toolbarElementFbGroupShowSocialContext,
+  toolbarElementFbGroupShowMetaData,
+  toolbarElementFbGroupLink
+} from "./toolbarElementFbGroup";
+
+// Element Facebook Comments
+export {
+  toolbarElementFbCommentsNumPosts,
+  toolbarElementFbCommentsTargetUrl,
+  toolbarElementFbCommentsHref
+} from "./toolbarElementFbComments";
+
+// Element Facebook Embed
+export {
+  toolbarElementFbEmbedType,
+  toolbarElementFbEmbedPostAndVideoShowText,
+  toolbarElementFbEmbedVideoAllowFullScreen,
+  toolbarElementFbEmbedVideoAutoPlay,
+  toolbarElementFbEmbedVideoCaptions,
+  toolbarElementFbEmbedPostHref,
+  toolbarElementFbEmbedVideoHref
+} from "./toolbarElementFbEmbed";
+
+// Filter
+export {
+  toolbarFilterHue,
+  toolbarFilterSaturation,
+  toolbarFilterBrightness,
+  toolbarFilterContrast
+} from "./toolbarFilters";

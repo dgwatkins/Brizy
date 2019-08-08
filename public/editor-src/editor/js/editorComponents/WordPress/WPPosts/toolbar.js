@@ -30,7 +30,7 @@ export function getItemsForDesktop(v) {
                 },
                 {
                   id: "numberPosts",
-                  label: t("Number posts"),
+                  label: t("Number of posts"),
                   type: "input",
                   value: {
                     value: v.numberPosts

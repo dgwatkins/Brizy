@@ -1,18 +1,75 @@
 import { t } from "visual/utils/i18n";
 import { getAnimations } from "visual/utils/options";
+import { defaultValueKey, defaultValueValue } from "visual/utils/onChange";
 
-export function toolbarEntranceAnimation({ v, position = 60 }) {
+export function toolbarEntranceAnimation({
+  v,
+  position = 60,
+  device,
+  state,
+  devices = "all"
+}) {
+  const animationKey = defaultValueKey({ key: "animation", device, state });
+
+  const animationNameKey = defaultValueKey({
+    key: "animationName",
+    device,
+    state
+  });
+
+  const animationDurationKey = defaultValueKey({
+    key: "animationDuration",
+    device,
+    state
+  });
+
+  const animationDelayKey = defaultValueKey({
+    key: "animationDelay",
+    device,
+    state
+  });
+
+  const animationNameValue = defaultValueValue({
+    v,
+    key: "animationName",
+    device,
+    state
+  });
+
+  const tempAnimationNameValue = defaultValueValue({
+    v,
+    key: "tempAnimationName",
+    device,
+    state
+  });
+
+  const animationDurationValue = defaultValueValue({
+    v,
+    key: "animationDuration",
+    device,
+    state
+  });
+
+  const animationDelayValue = defaultValueValue({
+    v,
+    key: "animationDelay",
+    device,
+    state
+  });
+
   const getAnimationChoices = () => {
-    const { animationName } = v;
-    if (animationName !== "none" || animationName === "initial") {
+    if (animationNameValue !== "none" || animationNameValue === "initial") {
       const choices =
-        animationName === "initial" ? v.tempAnimationName : animationName;
+        animationNameValue === "initial"
+          ? tempAnimationNameValue
+          : animationNameValue;
       return {
         [`${choices}`]: [
           {
-            id: "animationDuration",
+            id: animationDurationKey,
             label: t("Duration"),
             type: "slider",
+            devices,
             slider: {
               min: 0,
               max: 5,
@@ -32,17 +89,19 @@ export function toolbarEntranceAnimation({ v, position = 60 }) {
               ]
             },
             value: {
-              value: v.animationDuration / 1000
+              value: animationDurationValue / 1000
             },
             onChange: ({ value: animationDuration }, { sliderDragEnd }) => {
               return {
-                animationName: sliderDragEnd ? v.tempAnimationName : "initial",
+                animationName: sliderDragEnd
+                  ? tempAnimationNameValue
+                  : "initial",
                 animationDuration: animationDuration * 1000
               };
             }
           },
           {
-            id: "animationDelay",
+            id: animationDelayKey,
             label: t("Delay"),
             type: "slider",
             slider: {
@@ -64,11 +123,13 @@ export function toolbarEntranceAnimation({ v, position = 60 }) {
               ]
             },
             value: {
-              value: v.animationDelay / 1000
+              value: animationDelayValue / 1000
             },
             onChange: ({ value: animationDelay }, { sliderDragEnd }) => {
               return {
-                animationName: sliderDragEnd ? v.tempAnimationName : "initial",
+                animationName: sliderDragEnd
+                  ? tempAnimationNameValue
+                  : "initial",
                 animationDelay: animationDelay * 1000
               };
             }
@@ -81,16 +142,18 @@ export function toolbarEntranceAnimation({ v, position = 60 }) {
   };
 
   return {
-    id: "animation",
+    id: animationKey,
     type: "multiPicker",
     position,
     picker: {
-      id: "animationName",
+      id: animationNameKey,
       label: t("Entrance Animation"),
       type: "select",
       choices: getAnimations(),
       value:
-        v.animationName === "initial" ? v.tempAnimationName : v.animationName,
+        animationNameValue === "initial"
+          ? tempAnimationNameValue
+          : animationNameValue,
       onChange: animationName => ({
         animationName,
         tempAnimationName: animationName

@@ -5,12 +5,6 @@ import { getOptionColorHexByPalette } from "visual/utils/options";
 
 export function styleBgColor({ v, device, state, prefix = "bg" }) {
   const isHover = styleState({ v, state });
-  const bgColorType = defaultValueValue({
-    v,
-    key: `${prefix}ColorType`,
-    device,
-    state
-  });
 
   const { hex: bgColorHex } = getOptionColorHexByPalette(
     defaultValueValue({ v, key: `${prefix}ColorHex`, device, state }),
@@ -22,13 +16,6 @@ export function styleBgColor({ v, device, state, prefix = "bg" }) {
     key: `${prefix}ColorOpacity`,
     device,
     state
-  });
-
-  const hoverBgColorType = defaultValueValue({
-    v,
-    key: `${prefix}ColorType`,
-    device,
-    state: "hover"
   });
 
   const { hex: hoverBgColorHex } = getOptionColorHexByPalette(
@@ -53,9 +40,7 @@ export function styleBgColor({ v, device, state, prefix = "bg" }) {
     state: "hover"
   });
 
-  return isHover === "hover" && hoverBgColorType === "solid"
+  return isHover === "hover"
     ? hexToRgba(hoverBgColorHex, hoverBgColorOpacity)
-    : bgColorType === "solid"
-    ? hexToRgba(bgColorHex, bgColorOpacity)
-    : "transparent";
+    : hexToRgba(bgColorHex, bgColorOpacity);
 }
