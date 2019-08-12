@@ -220,7 +220,7 @@ class Brizy_Editor_API {
 
 			$project->setDataAsJson( $meta );
 
-			if ( (int) $this->param( 'is_autosave' ) ) {
+			if ( (int) $this->param( 'is_autosave' ) == 1 ) {
 				$project->auto_save_post();
 			} else {
 				$project->save();
@@ -272,7 +272,7 @@ class Brizy_Editor_API {
 				$this->post->set_editor_version( BRIZY_EDITOR_VERSION );
 			}
 
-			if ( (int) $this->param( 'is_autosave' ) ) {
+			if ( (int) $this->param( 'is_autosave' ) == 1 ) {
 				$this->post->auto_save_post();
 			} else {
 				$this->post->compile_page();
